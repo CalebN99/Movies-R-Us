@@ -1,0 +1,95 @@
+.App {
+  min-height: 100vh;
+  background: rgb(20, 20, 20);
+  overflow: hidden;
+  padding: 0
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.Filter {
+  width: 96vw;
+  height: 50px;
+  border-bottom: 1px solid rgb(50, 50, 50);
+  margin-top: 100px;
+  margin: 0 auto;
+}
+
+.nav {
+
+  width: 100%;
+
+}
+
+.nav h2 {
+  font-size: 34px;
+  color: #ADFF2F;
+  padding-left: 25px;
+}
+
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  width: 96vw;
+  margin: 0 auto;
+}
+
+.movieCard {
+  height: auto;
+  width: 400px;
+  margin: 20px;
+}
+
+.movieImage {
+  height: 200px;
+  width: 400px;
+  background: black;
+}
+
+.movieCard span {
+  color: lightgray;
+  float: right;
+  font-size: 18px;
+}
+
+.movieCard p {
+  color: white;
+  font-size: 24px;
+  padding-left: 10px;
+}
