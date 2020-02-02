@@ -72,8 +72,9 @@
 
 .movieCard {
   height: auto;
-  width: 400px;
+  width: 300px;
   margin: 20px;
+  cursor: pointer;
 }
 
 .movieImage {
@@ -92,4 +93,42 @@
   color: white;
   font-size: 24px;
   padding-left: 10px;
+
+}
+
+
+.closeButton {
+
+  position: fixed;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}
+
+
+.modal-main button {
+  width: 25%;
+  font-size: 18px;
+  margin: 0 auto;
+  margin-top: 40px;
+
+
+}
+
+.modal-main input {
+  width: 100%;
+  border: none;
+  padding-left: 75px;
+  padding-right: 75px;
+  padding-bottom: 8px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.modalSep {
+  height: 1px;
+  width: 60%;
+  border-bottom: 1px solid lightgray;
+  margin: 0 auto;
 }
