@@ -9,20 +9,20 @@ class App extends Component {
     this.state = {
       movies: [],
       selectedMovie: [],
-      showModal: false
+      show: false
     };
 
     this.performSearch();
   }
 
-  showModal = () => {
-    this.setState({ showModal: true });
-    console.log(this.state.showModal);
-  };
-  hideModal = () => {
-    this.setState({ showModal: false });
+  showModal = movie => {
+    this.setState({ show: true });
+    this.setState({ selectedMovie: movie });
   };
 
+  hideModal = () => {
+    this.setState({ show: false });
+  };
   performSearch() {
     console.log("Searched for movie");
     const api =
@@ -42,7 +42,12 @@ class App extends Component {
     });
   }
   render() {
-    const Modal = ({ handleClose, show, children }) => {
+    const Modal = ({ handleClose, show, movie }) => {
+      const moviePoster =
+        "https://image.tmdb.org/t/p/w185" +
+        this.state.selectedMovie.poster_path;
+
+      console.log(this.state.selectedMovie.title);
       const showHideClassName = show
         ? "modal display-block"
         : "modal display-none";
@@ -53,10 +58,17 @@ class App extends Component {
       };
       return (
         <div className={showHideClassName}>
+          <div onClick={handleClose} className="closeButton">
+            <div>
+              <h4>X</h4>
+            </div>
+          </div>
           <section className="modal-main">
-            <div onClick={handleClose} className="closeButton">
-              <div>
-                <i class="far fa-times-circle" style={style}></i>
+            <div className="modalll">
+              {" "}
+              <div className="movieModal">
+                <img src={moviePoster} />
+                <p>{this.state.selectedMovie.overview}</p>
               </div>
             </div>
           </section>
@@ -69,12 +81,9 @@ class App extends Component {
           <nav className="nav">
             <h2>Spook Films</h2>
           </nav>
+          <Modal show={this.state.show} handleClose={this.hideModal}></Modal>
           <div className="Filter"></div>
-          <Modal
-            show={this.state.showModal}
-            handleClose={this.hideModal}
-            movie={this.state.selectedMovie}
-          ></Modal>
+
           <div className="movieList">
             {this.state.movies.map(movie => {
               const moviePoster =
@@ -83,7 +92,9 @@ class App extends Component {
                 <div
                   className="movieCard"
                   key={movie.id}
-                  onClick={this.showModal}
+                  onClick={() => {
+                    this.showModal(movie);
+                  }}
                 >
                   <img src={moviePoster} />
                   <p>{movie.title}</p>
@@ -91,6 +102,11 @@ class App extends Component {
               );
             })}
           </div>
+          <Modal
+            show={this.state.showModal}
+            handleClose={this.hideModal}
+            movie={this.state.selectedMovie}
+          ></Modal>
         </div>
       </div>
     );
