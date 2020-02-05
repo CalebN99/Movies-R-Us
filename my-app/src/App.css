@@ -2,7 +2,7 @@
   min-height: 100vh;
   background: rgb(20, 20, 20);
   overflow: hidden;
-  padding: 0
+  padding: 0;
 }
 
 .App-logo {
@@ -41,33 +41,44 @@
   }
 }
 
-
-
 .Filter {
   width: 96vw;
   height: 50px;
   border-bottom: 1px solid rgb(50, 50, 50);
   margin-top: 100px;
   margin: 0 auto;
+  display: flex;
+  align-content: center;
+}
+
+.Filter h3 {
+  color: white;
+  cursor: pointer;
+  padding-bottom: 1px;
+}
+
+.Filter h3:hover {
+  color: lightgray;
+  text-decoration: underline lightgray;
+  padding: 0px;
 }
 
 .nav {
-
   width: 100%;
-
 }
 
 .nav h2 {
   font-size: 34px;
-  color: #ADFF2F;
+  color: #adff2f;
   padding-left: 25px;
 }
 
 .movieList {
   display: flex;
   flex-wrap: wrap;
-  width: 96vw;
-  margin: 0 auto;
+  width: 100vw;
+  justify-content: center;
+  margin-left: 2%;
 }
 
 .movieCard {
@@ -93,9 +104,7 @@
   color: white;
   font-size: 24px;
   padding-left: 10px;
-
 }
-
 
 .modal {
   position: fixed;
@@ -106,17 +115,34 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
+.genreModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 50%;
+}
+
 .modal-main {
   position: fixed;
   background: rgb(30, 30, 30);
-  width: 50%;
+  width: 60%;
   height: 60%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-
+.modal-main-genre {
+  position: fixed;
+  background: rgb(30, 30, 30);
+  width: 22%;
+  height: 22%;
+  top: 28%;
+  left: 16%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #adff2f;
+}
 
 .display-block {
   display: block;
@@ -126,32 +152,24 @@
   display: none;
 }
 
-
-
-
-
 .closeButton {
+  position: fixed;
   height: 2px;
-  margin-left: 27%;
-  margin-top: 8%;
-  color: #ADFF2F;
-  font-size: 28px
+  left: 18.5%;
+
+  top: 16%;
+  color: #adff2f;
+  font-size: 28px;
 }
 
 .closeButton:hover {
   cursor: pointer;
 }
 
-
-
-
-
-
 .movieModal {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .movieModal img {
@@ -161,8 +179,29 @@
 .movieModal p {
   color: white;
 
-  width: 650px;
+  width: 70%;
   font-size: 24px;
   padding: 10px;
   margin-left: 20px;
+}
+
+.GENRES {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.GENRES h3 {
+  color: white;
+  margin: 10px;
+  font-size: 18px;
+}
+.GENRES h3:hover {
+  cursor: pointer;
+  color: lightgray;
+  text-decoration: underline lightgray;
+}
+.All {
+  text-decoration: underline lightgray;
 }
