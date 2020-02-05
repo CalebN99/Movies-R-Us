@@ -10,6 +10,7 @@ class App extends Component {
       movies: [],
       selectedMovie: [],
       show: false,
+      orderShow: false,
       genreShow: false,
       horror: "&with_genres=27",
       apiUrl:
@@ -36,6 +37,13 @@ class App extends Component {
     this.setState({ genreShow: false });
   };
 
+  showOrder = () => {
+    this.setState({ orderShow: true });
+  };
+  hideOrder = () => {
+    this.setState({ orderShow: false });
+  };
+
   performSearch(genre) {
     console.log(genre);
     if (!genre) {
@@ -54,7 +62,39 @@ class App extends Component {
       }
     });
     this.hideGenreModal();
+    console.log(this.state.movies);
   }
+
+  orderLTG = () => {
+    let copy = this.state.movies;
+    copy = copy.sort((a, b) => a.popularity > b.popularity);
+
+    this.setState({ movies: copy });
+    this.setState({ orderShow: false });
+  };
+  orderGTL = () => {
+    let copy = this.state.movies;
+    copy = copy.sort((a, b) => a.popularity < b.popularity);
+
+    this.setState({ movies: copy });
+    this.setState({ orderShow: false });
+  };
+
+  orderLTGS = () => {
+    let copy = this.state.movies;
+    copy = copy.sort((a, b) => a.vote_average > b.vote_average);
+
+    this.setState({ movies: copy });
+    this.setState({ orderShow: false });
+  };
+
+  orderGTLS = () => {
+    let copy = this.state.movies;
+    copy = copy.sort((a, b) => a.vote_average < b.vote_average);
+
+    this.setState({ movies: copy });
+    this.setState({ orderShow: false });
+  };
 
   render() {
     const GenreModal = ({ handleClose, show, movie }) => {
@@ -215,6 +255,55 @@ class App extends Component {
                 <img src={moviePoster} />
                 <p>{this.state.selectedMovie.overview}</p>
               </div>
+              <h2 style={{ color: "white", marginLeft: "100px" }}>
+                {this.state.selectedMovie.vote_average} ☆
+              </h2>
+            </div>
+          </section>
+        </div>
+      );
+    };
+    const OrderBy = ({ handleClose, show, movie }) => {
+      const showHideClassName = show
+        ? "modalOrder display-block"
+        : "modalOrder display-none";
+
+      let style = {
+        color: "gray",
+        padding: "2px"
+      };
+      return (
+        <div className={showHideClassName}>
+          <section className="modal-main-orderby">
+            <div className="orders">
+              <h4
+                onClick={() => {
+                  this.orderGTL();
+                }}
+              >
+                Popularity <span style={{ color: "#adff2f" }}>▲</span>
+              </h4>
+              <h4
+                onClick={() => {
+                  this.orderLTG();
+                }}
+              >
+                Popularity <span style={{ color: "#adff2f" }}>▼</span>
+              </h4>
+              <h4
+                onClick={() => {
+                  this.orderGTLS();
+                }}
+              >
+                Rating <span style={{ color: "#adff2f" }}>▲</span>
+              </h4>
+              <h4
+                onClick={() => {
+                  this.orderLTGS();
+                }}
+              >
+                Rating <span style={{ color: "#adff2f" }}>▼</span>
+              </h4>
             </div>
           </section>
         </div>
@@ -222,7 +311,13 @@ class App extends Component {
     };
     return (
       <div className="App">
-        <div className="appBody">
+        <div
+          className="appBody"
+          onWheel={() => {
+            this.hideGenreModal();
+            this.hideOrder();
+          }}
+        >
           <nav className="nav">
             <h2>Movies R Us</h2>
           </nav>
@@ -231,6 +326,10 @@ class App extends Component {
             handleClose={this.hideGenreModal}
           ></GenreModal>
           <Modal show={this.state.show} handleClose={this.hideModal}></Modal>
+          <OrderBy
+            show={this.state.orderShow}
+            handleClose={this.hideOrder}
+          ></OrderBy>
 
           <div className="Filter">
             <h3
@@ -239,7 +338,17 @@ class App extends Component {
                 this.showGenreModal();
               }}
             >
-              Genres ^
+              Genres{" "}
+              <span style={{ fontSize: "14px", color: "#adff2f" }}>▼</span>
+            </h3>
+            <h3
+              onClick={() => {
+                // this.performSearch(this.state.horror);
+                this.showOrder();
+              }}
+            >
+              Order by{" "}
+              <span style={{ fontSize: "14px", color: "#adff2f" }}>▼</span>
             </h3>
           </div>
 

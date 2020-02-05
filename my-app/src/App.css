@@ -55,6 +55,7 @@
   color: white;
   cursor: pointer;
   padding-bottom: 1px;
+  margin-left: 20px;
 }
 
 .Filter h3:hover {
@@ -115,6 +116,14 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
+.modalOrder {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 50%;
+}
+
 .genreModal {
   position: fixed;
   top: 0;
@@ -137,9 +146,19 @@
   position: fixed;
   background: rgb(30, 30, 30);
   width: 22%;
-  height: 22%;
+  min-height: 22%;
   top: 28%;
-  left: 16%;
+  left: 17.5%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #adff2f;
+}
+.modal-main-orderby {
+  position: fixed;
+  background: rgb(30, 30, 30);
+  width: 10%;
+  min-height: 22%;
+  top: 28%;
+  left: 17.5%;
   transform: translate(-50%, -50%);
   border: 2px solid #adff2f;
 }
@@ -175,7 +194,9 @@
 .movieModal img {
   margin: 10px;
 }
-
+.movieModal h4 {
+  color: white;
+}
 .movieModal p {
   color: white;
 
@@ -204,4 +225,17 @@
 }
 .All {
   text-decoration: underline lightgray;
+}
+
+.orders h4 {
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  width: 100%;
+}
+
+.orders h4:hover {
+  background: rgba(50, 50, 50, 0.3);
+
+  cursor: pointer;
 }
