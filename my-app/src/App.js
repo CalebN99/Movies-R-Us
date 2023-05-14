@@ -12,11 +12,14 @@ class App extends Component {
       show: false,
       orderShow: false,
       genreShow: false,
-      horror: "&with_genres=27",
       apiUrl:
-        "https://api.themoviedb.org/3/discover/movie?api_key=0eef8ca95ff1ead2d5f19e8f272c6bee"
+        "https://api.themoviedb.org/3/discover/movie?api_key=742b4f9ef0f1842c765810ec16e2e95a"
     };
 
+   
+  }
+
+  componentDidMount() {
     this.performSearch();
   }
 
@@ -65,34 +68,41 @@ class App extends Component {
     console.log(this.state.movies);
   }
 
-  orderLTG = () => {
-    let copy = this.state.movies;
-    copy = copy.sort((a, b) => a.popularity > b.popularity);
+  orderLTG() {
+    
+    
 
-    this.setState({ movies: copy });
+    const sorted = [...this.state.movies].sort((a, b) => (a.popularity
+    > b.popularity) ? 1 : -1);
+
+    console.log(sorted)
+
+    this.setState({movies: sorted});
     this.setState({ orderShow: false });
+   
   };
   orderGTL = () => {
-    let copy = this.state.movies;
-    copy = copy.sort((a, b) => a.popularity < b.popularity);
+    
+    const sorted = [...this.state.movies].sort((a, b) => (a.popularity
+      < b.popularity) ? 1 : -1);
 
-    this.setState({ movies: copy });
+    this.setState({ movies: sorted });
     this.setState({ orderShow: false });
   };
 
   orderLTGS = () => {
-    let copy = this.state.movies;
-    copy = copy.sort((a, b) => a.vote_average > b.vote_average);
 
-    this.setState({ movies: copy });
+    const sorted = [...this.state.movies].sort((a, b) => (a.vote_average > b.vote_average) ? 1 : -1);
+
+    this.setState({ movies: sorted });
     this.setState({ orderShow: false });
   };
 
   orderGTLS = () => {
-    let copy = this.state.movies;
-    copy = copy.sort((a, b) => a.vote_average < b.vote_average);
+    const sorted = [...this.state.movies].sort((a, b) => (a.vote_average < b.vote_average) ? 1 : -1);
+  
 
-    this.setState({ movies: copy });
+    this.setState({ movies: sorted });
     this.setState({ orderShow: false });
   };
 
@@ -277,9 +287,9 @@ class App extends Component {
           <section className="modal-main-orderby">
             <div className="orders">
               <h4
-                onClick={() => {
-                  this.orderGTL();
-                }}
+                onClick={
+                  this.orderGTL
+                }
               >
                 Popularity <span style={{ color: "#adff2f" }}>▲</span>
               </h4>
