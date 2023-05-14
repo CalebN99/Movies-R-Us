@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import $ from "jquery";
-
 import "./App.css";
+
+
+
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +15,7 @@ class App extends Component {
       orderShow: false,
       genreShow: false,
       apiUrl:
-        "https://api.themoviedb.org/3/discover/movie?api_key=742b4f9ef0f1842c765810ec16e2e95a"
+        "https://api.themoviedb.org/3/discover/movie?api_key=" + process.env.REACT_APP_TOKEN
     };
 
    
@@ -112,10 +114,7 @@ class App extends Component {
         ? "genreModal display-block"
         : "genreModal display-none";
 
-      let style = {
-        color: "gray",
-        padding: "2px"
-      };
+   
       return (
         <div className={showHideClassName}>
           <section className="modal-main-genre">
@@ -247,10 +246,7 @@ class App extends Component {
         ? "modal display-block"
         : "modal display-none";
 
-      let style = {
-        color: "gray",
-        padding: "2px"
-      };
+
       return (
         <div className={showHideClassName}>
           <div onClick={handleClose} className="closeButton">
@@ -262,7 +258,7 @@ class App extends Component {
             <div className="modalll">
               {" "}
               <div className="movieModal">
-                <img src={moviePoster} />
+                <img src={moviePoster} alt="movie_poster"/>
                 <p>{this.state.selectedMovie.overview}</p>
               </div>
               <h2 style={{ color: "white", marginLeft: "100px" }}>
@@ -278,10 +274,7 @@ class App extends Component {
         ? "modalOrder display-block"
         : "modalOrder display-none";
 
-      let style = {
-        color: "gray",
-        padding: "2px"
-      };
+  
       return (
         <div className={showHideClassName}>
           <section className="modal-main-orderby">
@@ -374,7 +367,7 @@ class App extends Component {
                     this.showModal(movie);
                   }}
                 >
-                  <img src={moviePoster} />
+                  <img src={moviePoster} alt="movie_poster" />
                   <p>{movie.title}</p>
                 </div>
               );
