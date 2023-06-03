@@ -1,2 +1,2 @@
 # Movies-R-Us
-React application using TMDB Api, lists movies out for you to view rating and descriptiton, filter by genres and order by popularity and rating. To run, enter "cd my-app" then "npm start"
+Practice React application using TMDB (The Movie Database) Api. Lists movies out for you to view the ratings and descriptitons, filter by genres and order by popularity and rating.
